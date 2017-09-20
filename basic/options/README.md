@@ -2,8 +2,6 @@
 
 This tutorial will cover some additional options you can use when running contianers.
 
-## Mounting
-
 It is possible to mount volumes onto containers.
 We can do this with the `-v` flag.
 For example,
@@ -22,8 +20,12 @@ and attaches the terminal to a pseudo terminal from the container.
 
 The `--rm` flag tells the engine to remove the container after it has been stopped.
 
+The `/bin/sh` is passed _after_ the image name.
+This tells the engine to overwrite the default command with `/bin/sh`
+
 Since we started the container in interactive mode,
-we can start executing commands.
+and executed the `/bin/sh` command,
+we can start executing commands inside the container!
 
 ```
 $ ls /usr/src/data
@@ -31,3 +33,9 @@ test.txt text.txt
 ```
 
 We can also create new files in this directory
+
+```
+$ echo "Hello" >> /usr/src/data/hello.txt
+```
+
+You can see that a file has been created in the `data` folder!
