@@ -10,11 +10,12 @@ For example,
 we can mount the `data` folder like this:
 
 ```
-$ docker run -v data:/usr/src/data -it --rm alpine /bin/sh
+$ docker run -v $(pwd)/data:/usr/src/data -it --rm alpine /bin/sh
 / #
 ```
 
-The `-v data:/usr/src/data` option mounts the `data` directory onto the container as `/usr/src/data`.
+The `-v $(pwd)/data:/usr/src/data` option mounts the `data` directory onto the container as `/usr/src/data`.
+If `$(pwd)` does not work for you, you can replace it with the full path.
 
 The `-it` flag makes the container start in interactive mode,
 and attaches the terminal to a pseudo terminal from the container.
@@ -25,5 +26,8 @@ Since we started the container in interactive mode,
 we can start executing commands.
 
 ```
-$ ls /data
+$ ls /usr/src/data
+test.txt text.txt
 ```
+
+We can also create new files in this directory
